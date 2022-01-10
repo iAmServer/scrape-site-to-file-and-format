@@ -17,7 +17,7 @@ const readFiles = dirname => {
             if (isExist) {
                 const filenames = await fs.readdir(`${dirname}/js`);
                 const files_promise = filenames.map(filename => {
-                    if (filename.endsWith('.js')) {
+                    if (filename.endsWith('.js') || filename.endsWith('.ts') || filename.endsWith('.jsx') || filename.endsWith('.tsx')) {
                         return fs.readFile(`${dirname}/js/${filename}`, 'utf8');
                     }
                 });
@@ -94,7 +94,7 @@ const scrapeWebsite = (config, removeDirectory = true) => {
 }
 
 scrapeWebsite({
-    urls: ['https://iffly-dev.herokuapp.com/']
-});
+    urls: ['https://deathlymint1.mortuary-inc.io/']
+}, false);
 
 module.exports = scrapeWebsite;
